@@ -18,7 +18,7 @@
       const members = getMembers();
       members.push(newMember);
       saveMembers(members);
-      msg.textContent = "🎉 Welcome to the Coffee Gang! Redirecting...";
+      msg.textContent = "Welcome to the Coffee Gang. Redirecting...";
       msg.style.color = "var(--accent)";
       setTimeout(() => {
         window.location.href = "members.html";
@@ -35,8 +35,6 @@
         const li = document.createElement("li");
         li.className = "member";
         li.innerHTML = `
-          <span><strong>${m.name}</strong> <span class="rank">(${m.rank})</span></span>
-          <span class="creation">${m.creation ? m.creation : "No fav creation yet"}</span>
           <span class="joined">${new Date(m.joined).toLocaleDateString()}</span>
         `;
         list.appendChild(li);
