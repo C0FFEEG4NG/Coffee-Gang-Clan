@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     signupForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const displayName = signupForm.Username.value.trim();
+      const Username = signupForm.Username.value.trim();
       const creationName = signupForm.creationName.value.trim();
       const rank = signupForm.rank.value;
 
