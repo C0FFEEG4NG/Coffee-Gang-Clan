@@ -47,7 +47,7 @@
             font-weight: 500;
             color: #374151;
         }
-        .form-input {
+        .form-input, .form-select { /* Added .form-select for consistent styling */
             width: 100%;
             padding: 0.75rem;
             border: 1px solid #d1d5db;
@@ -55,6 +55,12 @@
             margin-bottom: 1rem;
             font-size: 1rem;
             box-sizing: border-box; /* Include padding in width */
+            background-color: white; /* Ensure select has white background */
+            appearance: none; /* Remove default arrow for select */
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236B7280%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13.2-6.4H18.6c-5%200-9.3%201.8-13.2%206.4-3.9%204.5-5.9%2010.2-5.4%2016.7%200%206.5%202.1%2012.2%206.4%2016.7l127.9%20127.9c4.5%204.5%2010.2%206.4%2016.7%206.4s12.2-1.8%2016.7-6.4L287%20102.8c4.3-4.5%206.4-10.2%206.4-16.7%200-6.5-2.1-12.2-6.4-16.7z%22%2F%3E%3C%2Fsvg%3E'); /* Custom arrow for select */
+            background-repeat: no-repeat;
+            background-position: right 0.7rem top 50%;
+            background-size: 0.65rem auto;
         }
         .form-button {
             background-color: #facc15; /* Yellow button */
@@ -90,11 +96,22 @@
 
     <main class="flex-grow flex items-center justify-center p-4">
         <div class="bg-white p-6 sm:p-8 rounded-lg shadow-xl w-full max-w-sm">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Join the Gang</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Join the Gang!</h2>
             <form id="signupForm" class="space-y-4">
                 <div>
                     <label for="usernameInput" class="form-label">Username</label>
                     <input type="text" id="usernameInput" name="Username" class="form-input" placeholder="Your Coffee Gang name" required />
+                </div>
+                
+                <div>
+                    <label for="roleSelect" class="form-label">Role in Blobtown</label>
+                    <select id="roleSelect" name="role" class="form-select" required>
+                        <option value="">-- Select a Role --</option>
+                        <option value="Seller">Seller</option>
+                        <option value="Builder">Builder</option>
+                        <option value="Blob Builder">Blob Builder</option>
+                        <option value="General Member">General Member</option> <!-- Default/fallback role -->
+                    </select>
                 </div>
                 
                 <button type="submit" class="form-button">Join Now</button>
