@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const creationName = signupForm.creationName.value.trim();
       const rank = signupForm.rank.value;
 
-      const newMember = { displayName, creationName, rank };
+      const newMember = { Username, creationName, rank };
 
       const members = JSON.parse(localStorage.getItem("members") || "[]");
       members.push(newMember);
