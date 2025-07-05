@@ -5,6 +5,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to render and remove members
   function renderMembers() {
+    // IMPORTANT: Check if memberList element actually exists before proceeding
+    if (!memberList) {
+      console.error("Error: Element with ID 'memberList' not found in the HTML.");
+      return; // Stop function execution if the element is missing
+    }
+
     const members = JSON.parse(localStorage.getItem("members") || "[]");
     memberList.innerHTML = ""; // Clear existing list
 
@@ -13,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
       li.classList.add("member");
 
       const display = document.createElement("span");
-      // Display only the username, as creationName and rank are no longer used
-      display.innerHTML = `<strong>${member.username}</strong>`;
+      // Display username and now the role
+      display.innerHTML = `<strong>${member.username}</strong> <span class="text-gray-500 text-sm">(${member.role || 'No Role'})</span>`; // Display role, with fallback
 
       const removeBtn = document.createElement("button");
       removeBtn.textContent = "Remove";
@@ -46,13 +52,14 @@ document.addEventListener("DOMContentLoaded", () => {
     signupForm.addEventListener("submit", (e) => {
       e.preventDefault(); // Prevent default form submission
 
-      // Only get the username, as creationName and rank are not present in your form
+      // Get username and the new role field
       const username = signupForm.querySelector("[name='Username']").value.trim();
+      const role = signupForm.querySelector("[name='role']").value; // Get the selected role
 
-      // Basic validation: Check only if username is empty
-      if (!username) { // THIS IS THE CORRECTED LINE!
+      // Basic validation: Check if both username and role are empty
+      if (!username || !role) { // Updated validation to include role
         if (formMsg) {
-          formMsg.textContent = "Please enter a username.";
+          formMsg.textContent = "Please enter a username and select a role.";
           formMsg.style.color = "red"; // Make error message red
           setTimeout(() => {
             formMsg.textContent = "";
@@ -62,8 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return; // Stop execution if validation fails
       }
 
-      // Create new member object with only the username
-      const newMember = { username };
+      // Create new member object with username AND role
+      const newMember = { username, role };
 
       // Retrieve existing members, or initialize an empty array if none
       const members = JSON.parse(localStorage.getItem("members") || "[]");
@@ -83,10 +90,12 @@ document.addEventListener("DOMContentLoaded", () => {
       signupForm.reset(); // Clear the form fields
       renderMembers(); // Re-render the list to show the new member
     });
+  } else {
+    console.error("Error: Element with ID 'signupForm' not found in the HTML.");
   }
 
   // Initial render of members when the page loads
-  if (memberList) {
+  if (memberList) { // This check is still good for the initial call
     renderMembers();
   }
 });
