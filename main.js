@@ -1,44 +1,59 @@
-(() => {
-  const form = document.getElementById("signupForm");
-  const list = document.getElementById("memberList");
-  const msg = document.getElementById("formMsg");
+// === Sign-up Form Logic ===
+const signupForm = document.getElementById("signupForm");
+if (signupForm) {
+  signupForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-  // Get members from localStorage
-  const getMembers = () => JSON.parse(localStorage.getItem("coffeeGangMembers")) || [];
-  const saveMembers = (arr) => localStorage.setItem("coffeeGangMembers", JSON.stringify(arr));
+    const displayName = signupForm.displayName.value.trim();
+    const creationName = signupForm.creationName.value.trim();
+    const rank = signupForm.rank.value;
 
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const newMember = {
-        name: data.get("Username"),
-        joined: new Date().toISOString(),
-      };
-      const members = getMembers();
-      members.push(newMember);
-      saveMembers(members);
-      msg.textContent = "Welcome to the Coffee Gang. Redirecting...";
-      msg.style.color = "var(--accent)";
-      setTimeout(() => {
-        window.location.href = "members.html";
-      }, 1200);
-    });
-  }
+    const newMember = { displayName, creationName, rank };
 
-  if (list) {
-    const members = getMembers();
-    if (members.length === 0) {
-      list.innerHTML = "<p>No gang members</p>";
-    } else {
-      members.reverse().forEach((m) => {
-        const li = document.createElement("li");
-        li.className = "member";
-        li.innerHTML = `
-          <span class="joined">${new Date(m.joined).toLocaleDateString()}</span>
-        `;
-        list.appendChild(li);
-      });
+    const members = JSON.parse(localStorage.getItem("members") || "[]");
+    members.push(newMember);
+    localStorage.setItem("members", JSON.stringify(members));
+
+    document.getElementById("formMsg").textContent = "You're in";
+    signupForm.reset();
+  });
+}
+
+// === Members Page Logic ===
+const memberList = document.getElementById("memberList");
+
+function renderMembers() {
+  const members = JSON.parse(localStorage.getItem("members") || "[]");
+  memberList.innerHTML = "";
+
+  members.forEach((member, index) => {
+    const li = document.createElement("li");
+    li.className = "member";
+
+      <button class="remove-btn" data-index="${index}">Remove</button>
+    `;
+
+    memberList.appendChild(li);
+  });
+}
+
+memberList?.addEventListener("click", (e) => {
+  if (e.target.classList.contains("remove-btn")) {
+    const index = e.target.getAttribute("data-index");
+
+    const members = JSON.parse(localStorage.getItem("members") || "[]");
+    const member = members[index];
+
+    const confirmDelete = confirm(
+      `Are you sure you wanna kick ${member.Username} from the Coffee Gang?`
+    );
+
+    if (confirmDelete) {
+      members.splice(index, 1);
+      localStorage.setItem("members", JSON.stringify(members));
+      renderMembers();
     }
   }
-})();
+});
+
+if (memberList) renderMembers();
