@@ -50,8 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Use consistent camelCase for variable names
       const username = signupForm.querySelector("[name='Username']").value.trim();
-      const creationName = signupForm.querySelector("[name='creationName']").value.trim();
-      const rank = signupForm.querySelector("[name='rank']").value;
 
       // Basic validation
       if (!username || !creationName || !rank) {
