@@ -13,10 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
       li.classList.add("member");
 
       const display = document.createElement("span");
-      // Use member.username (lowercase) for consistency
-      display.innerHTML = `<strong>${member.username}</strong> (${member.rank})${
-        member.creationName ? ` - Fav: ${member.creationName}` : ""
-      }`;
+      // Display only the username, as creationName and rank are no longer used
+      display.innerHTML = `<strong>${member.username}</strong>`;
 
       const removeBtn = document.createElement("button");
       removeBtn.textContent = "Remove";
@@ -48,13 +46,13 @@ document.addEventListener("DOMContentLoaded", () => {
     signupForm.addEventListener("submit", (e) => {
       e.preventDefault(); // Prevent default form submission
 
-      // Use consistent camelCase for variable names
+      // Only get the username, as creationName and rank are not present in your form
       const username = signupForm.querySelector("[name='Username']").value.trim();
 
-      // Basic validation
-      if (!username || !creationName || !rank) {
+      // Basic validation: Check only if username is empty
+      if (!username) { // THIS IS THE CORRECTED LINE!
         if (formMsg) {
-          formMsg.textContent = "Please fill in all fields.";
+          formMsg.textContent = "Please enter a username.";
           formMsg.style.color = "red"; // Make error message red
           setTimeout(() => {
             formMsg.textContent = "";
@@ -64,7 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return; // Stop execution if validation fails
       }
 
-      const newMember = { username, creationName, rank }; // Use username (lowercase)
+      // Create new member object with only the username
+      const newMember = { username };
 
       // Retrieve existing members, or initialize an empty array if none
       const members = JSON.parse(localStorage.getItem("members") || "[]");
