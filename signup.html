@@ -1,33 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join Coffee Gang</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Inter font and general body */
+        body {
+            font-family: "Inter", sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure body takes full viewport height */
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        nav {
+            background-color: #374151; /* Darker gray for nav */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 1.75rem; /* Larger logo text */
+            font-weight: bold;
+            color: #facc15; /* Coffee-like yellow */
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #facc15; /* Yellow on hover */
+        }
+        /* Specific styles for form elements */
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            box-sizing: border-box; /* Include padding in width */
+        }
+        .form-button {
+            background-color: #facc15; /* Yellow button */
+            color: #374151; /* Dark text for button */
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.125rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .form-button:hover {
+            background-color: #eab308; /* Darker yellow on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+        .form-message {
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100">
     <nav>
-      <h1 class="logo">Coffee Gang ☕</h1>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="members.html">Members</a>
-      </div>
+        <h1 class="logo">Coffee Gang</h1>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="members.html">Members</a>
+        </div>
     </nav>
 
-    <main class="container">
-      <h2>Sign up Form</h2>
-      <form id="signupForm" class="card">
-        <label>
-          Username
-          <input type="text" name="Username" required />
-        </label>
-        
-        <button class="btn" type="submit">Join the Gang</button>
-        <p id="formMsg" class="msg"></p>
-      </form>
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="bg-white p-6 sm:p-8 rounded-lg shadow-xl w-full max-w-sm">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Join the Gang</h2>
+            <form id="signupForm" class="space-y-4">
+                <div>
+                    <label for="usernameInput" class="form-label">Username</label>
+                    <input type="text" id="usernameInput" name="Username" class="form-input" placeholder="Your Coffee Gang name" required />
+                </div>
+                
+                <button type="submit" class="form-button">Join Now</button>
+                <p id="formMsg" class="form-message"></p>
+            </form>
+        </div>
     </main>
 
+    <!-- The main.js script is needed on this page for signup functionality -->
     <script src="main.js" defer></script>
-  </body>
+</body>
 </html>
