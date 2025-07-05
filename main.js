@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       members.push(newMember);
       localStorage.setItem("members", JSON.stringify(members));
 
-      document.getElementById("formMsg").textContent = "✅ You're in!";
+      document.getElementById("formMsg").textContent = "You're in";
       signupForm.reset();
     });
   }
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       removeBtn.addEventListener("click", () => {
         const confirmDelete = confirm(
-          `Are you *sure* you wanna kick ${member.displayName} from the Coffee Gang? 😭`
+          `Are you sure you wanna kick ${member.Username} from the Coffee Gang?`
         );
         if (confirmDelete) {
           members.splice(index, 1);
