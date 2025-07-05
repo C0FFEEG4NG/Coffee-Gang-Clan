@@ -1,19 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coffee Gang</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Inter font and general body */
+        body {
+            font-family: "Inter", sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure body takes full viewport height */
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        nav {
+            background-color: #374151; /* Darker gray for nav */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 1.75rem; /* Larger logo text */
+            font-weight: bold;
+            color: #facc15; /* Coffee-like yellow */
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #facc15; /* Yellow on hover */
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100">
     <nav>
-      <h1 class="logo">Coffee Gang</h1>
-      <div class="nav-links">
-        <a href="signup.html">Join</a>
-        <a href="members.html">Members</a>
-      </div>
+        <h1 class="logo">Coffee Gang</h1>
+        <div class="nav-links">
+            <a href="signup.html">Join</a>
+            <a href="members.html">Members</a>
+        </div>
     </nav>
-    <script src="main.js" defer></script>
-  </body>
+
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="text-center space-y-8 md:space-y-12">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-800 leading-tight">
+                Welcome to the Coffee Gang!
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
+                Your exclusive hub for coffee enthusiasts. Join us or check out our awesome members!
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="signup.html" class="
+                    bg-yellow-500 hover:bg-yellow-600 text-white font-bold
+                    py-4 px-8 rounded-full shadow-lg transition duration-300
+                    transform hover:scale-105 text-xl sm:text-2xl w-full sm:w-auto text-center
+                ">
+                    Join the Gang
+                </a>
+                <a href="members.html" class="
+                    bg-gray-700 hover:bg-gray-800 text-white font-bold
+                    py-4 px-8 rounded-full shadow-lg transition duration-300
+                    transform hover:scale-105 text-xl sm:text-2xl w-full sm:w-auto text-center
+                ">
+                    Members
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- The main.js script is not needed on the index page, only on pages that use its functionality -->
+    <!-- <script src="main.js" defer></script> -->
+</body>
 </html>
