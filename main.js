@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     signupForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const displayName = signupForm.displayName.value.trim();
+      const displayName = signupForm.Username.value.trim();
       const creationName = signupForm.creationName.value.trim();
       const rank = signupForm.rank.value;
 
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
       li.classList.add("member");
 
       const display = document.createElement("span");
-      display.innerHTML = `<strong>${member.displayName}</strong> (${member.rank})${
+      display.innerHTML = `<strong>${member.Username}</strong> (${member.rank})${
         member.creationName ? ` - Fav: ${member.creationName}` : ""
       }`;
 
