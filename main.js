@@ -1,4 +1,3 @@
-// === Sign-up Form Logic ===
 const signupForm = document.getElementById("signupForm");
 if (signupForm) {
   signupForm.addEventListener("submit", (e) => {
@@ -30,8 +29,10 @@ function renderMembers() {
     const li = document.createElement("li");
     li.className = "member";
 
-      <button class="remove-btn" data-index="${index}">Remove</button>
-    `;
+    
+    li.innerHTML = `
+  <button class="remove-btn" data-index="${index}">Remove</button>
+`;
 
     memberList.appendChild(li);
   });
