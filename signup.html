@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join Coffee Gang</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <nav>
+      <h1 class="logo">Coffee Gang ☕</h1>
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="members.html">Members</a>
@@ -15,12 +16,18 @@
     </nav>
 
     <main class="container">
-      <h2>Sign‑up Form</h2>
+      <h2>Sign up Form</h2>
       <form id="signupForm" class="card">
         <label>
-          Your Blobtown Username
-          <input type="text" name="Blobtown Username" required />
+          Username
+          <input type="text" name="Username" required />
         </label>
+        
+        <button class="btn" type="submit">Join the Gang</button>
+        <p id="formMsg" class="msg"></p>
       </form>
     </main>
+
+    <script src="main.js" defer></script>
   </body>
+</html>
