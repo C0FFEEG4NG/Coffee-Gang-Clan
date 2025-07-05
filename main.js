@@ -3,24 +3,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const memberList = document.getElementById("memberList");
 
   // === Handle sign-ups ===
-  if (signupForm) {
-    signupForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+signupForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-      const Username = signupForm.Username.value.trim();
-      const creationName = signupForm.creationName.value.trim();
-      const rank = signupForm.rank.value;
+  const Username = signupForm.querySelector("[name='Username']").value.trim();
+  const creationName = signupForm.querySelector("[name='creationName']").value.trim();
+  const rank = signupForm.querySelector("[name='rank']").value;
 
-      const newMember = { Username, creationName, rank };
+  const newMember = { Username, creationName, rank };
 
-      const members = JSON.parse(localStorage.getItem("members") || "[]");
-      members.push(newMember);
-      localStorage.setItem("members", JSON.stringify(members));
+  const members = JSON.parse(localStorage.getItem("members") || "[]");
+  members.push(newMember);
+  localStorage.setItem("members", JSON.stringify(members));
 
-      document.getElementById("formMsg").textContent = "You're in";
-      signupForm.reset();
-    });
-  }
+  document.getElementById("formMsg").textContent = "You're in";
+  signupForm.reset();
+});
 
   // === Render + remove members ===
   function renderMembers() {
