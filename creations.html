@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coffee Gang Add Creation</title>
+    <!-- Tailwind CSS CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for Inter font and general body */
+        body {
+            font-family: "Inter", sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure body takes full viewport height */
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        nav {
+            background-color: #374151; /* Darker gray for nav */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 1.75rem; /* Larger logo text */
+            font-weight: bold;
+            color: #facc15; /* Coffee-like yellow */
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #facc15; /* Yellow on hover */
+        }
+        /* Form specific styles */
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #374151;
+        }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .form-textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        .form-button {
+            background-color: #facc15;
+            color: #374151;
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.125rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .form-button:hover {
+            background-color: #eab308;
+            transform: translateY(-2px);
+        }
+        .form-message {
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100">
+    <nav>
+        <h1 class="logo">Coffee Gang ☕</h1>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="signup.html">Join</a>
+            <a href="members.html">Members</a>
+            <a href="creations.html">Creations</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow flex items-center justify-center p-4">
+        <div class="bg-white p-6 sm:p-8 rounded-lg shadow-xl w-full max-w-xl">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Add a New Blobtown Creation</h2>
+            
+            <!-- Form to add new creations -->
+            <div class="p-6 bg-gray-50 rounded-lg border border-gray-200">
+                <form id="creationForm" class="space-y-4">
+                    <div>
+                        <label for="creationNameInput" class="form-label">Creation Name</label>
+                        <input type="text" id="creationNameInput" name="creationName" class="form-input" placeholder="Creation Name" required />
+                    </div>
+                    <div>
+                        <label for="creationDescriptionInput" class="form-label">Description</label>
+                        <input type="url" id="creationDescriptionInput" name="creationDescriptionInput" class="form-input" placeholder="Description" /> 
+                    </div>
+                    <div>
+                        <label for="creationImageUrlInput" class="form-label">URL img</label>
+                        <textarea id="creationImageUrlInput" name="creationImageUrlInput" class="form-textarea" placeholder="img url" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-button">Add Creation</button>
+                    <p id="creationFormMsg" class="form-message"></p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- main.js will handle the creation form submission -->
+    <script src="main.js" defer></script>
+</body>
+</html>
